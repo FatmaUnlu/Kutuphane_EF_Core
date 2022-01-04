@@ -4,6 +4,7 @@ using Kutuphane_EF_Core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kutuphane_EF_Core.Migrations
 {
     [DbContext(typeof(KutuphaneContext))]
-    partial class KutuphaneContextModelSnapshot : ModelSnapshot
+    [Migration("20220104175406_UyeGuncelleme")]
+    partial class UyeGuncelleme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,10 +32,12 @@ namespace Kutuphane_EF_Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Adres")
+                    b.Property<int>("AdresId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cinsiyet")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -51,11 +55,6 @@ namespace Kutuphane_EF_Core.Migrations
 
                     b.Property<DateTime>("KayitTarihi")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("TCNo")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Telefon")
                         .IsRequired()
@@ -77,7 +76,68 @@ namespace Kutuphane_EF_Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdresId");
+
                     b.ToTable("Uyeler");
+                });
+
+            modelBuilder.Entity("Kutuphane_EF_Core.Models.Adres", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BinaNo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cadde")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Il")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Ilce")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Kat")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mahalle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("PostaKodu")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Sokak")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Adresler");
                 });
 
             modelBuilder.Entity("Kutuphane_EF_Core.Models.Emanet", b =>
@@ -293,6 +353,17 @@ namespace Kutuphane_EF_Core.Migrations
                     b.ToTable("Yazarlar");
                 });
 
+            modelBuilder.Entity("Kutuphane_EF_Core.Models.Abstracts.Uye", b =>
+                {
+                    b.HasOne("Kutuphane_EF_Core.Models.Adres", "Adres")
+                        .WithMany("Uyeler")
+                        .HasForeignKey("AdresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Adres");
+                });
+
             modelBuilder.Entity("Kutuphane_EF_Core.Models.Emanet", b =>
                 {
                     b.HasOne("Kutuphane_EF_Core.Models.Kitap", "Kitap")
@@ -364,6 +435,11 @@ namespace Kutuphane_EF_Core.Migrations
             modelBuilder.Entity("Kutuphane_EF_Core.Models.Abstracts.Uye", b =>
                 {
                     b.Navigation("Emanetlers");
+                });
+
+            modelBuilder.Entity("Kutuphane_EF_Core.Models.Adres", b =>
+                {
+                    b.Navigation("Uyeler");
                 });
 
             modelBuilder.Entity("Kutuphane_EF_Core.Models.Kategori", b =>

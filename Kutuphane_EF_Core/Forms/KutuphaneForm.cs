@@ -25,6 +25,8 @@ namespace Kutuphane_EF_Core.Forms
 
         private Yazar_Kategori_KayitForm _frmYazarKategori;
         private KitapKayitForm _frmKitapKayit;
+        private KisiKayitForm _frmKisiKayit;
+
         private void yazarKategoriKayıtFormuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_frmYazarKategori == null || _frmYazarKategori.IsDisposed)
@@ -47,6 +49,18 @@ namespace Kutuphane_EF_Core.Forms
             _frmKitapKayit.MdiParent = this;
             _frmKitapKayit.WindowState = FormWindowState.Maximized;
             _frmKitapKayit.Show();
+        }
+
+        private void kişiKayıtFormuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_frmKisiKayit == null || _frmKisiKayit.IsDisposed)
+            {
+                _frmKisiKayit = new KisiKayitForm();
+            }
+
+            _frmKisiKayit.MdiParent = this;
+            _frmKisiKayit.WindowState = FormWindowState.Maximized;
+            _frmKisiKayit.Show();
         }
     }
 }

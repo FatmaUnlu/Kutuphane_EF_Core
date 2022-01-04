@@ -1532,6 +1532,7 @@
             this.kişiKayıtFormuToolStripMenuItem.Name = "kişiKayıtFormuToolStripMenuItem";
             this.kişiKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.kişiKayıtFormuToolStripMenuItem.Text = "Kişi Kayıt Formu";
+            this.kişiKayıtFormuToolStripMenuItem.Click += new System.EventHandler(this.kişiKayıtFormuToolStripMenuItem_Click);
             // 
             // kitapKayıtFormuToolStripMenuItem
             // 

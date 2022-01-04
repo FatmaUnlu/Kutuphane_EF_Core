@@ -33,9 +33,7 @@ namespace Kutuphane_EF_Core.Data
         public DbSet<Yazar> Yazarlar { get; set; }
         public DbSet<Yayinevi> Yayinevleri { get; set; }
 
-
         public DbSet<KitapKategori> KitapKategoriler { get; set; }
-        public DbSet<Adres> Adresler { get; set; }
         public DbSet<KitapYazar> KitapYazarlar { get; set; }
 
 
