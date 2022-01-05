@@ -23,14 +23,11 @@ namespace Kutuphane_EF_Core.Models.Abstracts
         [Required, StringLength(50)]
         public string UyeSoyad { get; set; }
           
-        [Required, StringLength(11)]
+        [Required, StringLength(14)]
         public string Telefon { get; set; }
 
         [Required, StringLength(35)]
         public string Eposta { get; set; }
-
-        [Required]
-        public DateTime KayitTarihi { get; set; } = DateTime.Now;
 
         [Required, StringLength(250)]
         public string Adres { get; set; }

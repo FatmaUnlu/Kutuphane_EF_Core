@@ -4,6 +4,7 @@ using Kutuphane_EF_Core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kutuphane_EF_Core.Migrations
 {
     [DbContext(typeof(KutuphaneContext))]
-    partial class KutuphaneContextModelSnapshot : ModelSnapshot
+    [Migration("20220105082018_Uye1")]
+    partial class Uye1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

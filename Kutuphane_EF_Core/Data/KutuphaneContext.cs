@@ -76,9 +76,8 @@ namespace Kutuphane_EF_Core.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-
             modelBuilder.Entity<KitapKategori>()
-                .ToTable("SiparisDetaylari");
+                .ToTable("KitapKategori");
 
             modelBuilder.Entity<KitapKategori>()
            .HasKey(x => new { x.KitapId, x.KategoriId });

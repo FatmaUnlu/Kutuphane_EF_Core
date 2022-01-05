@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtİsim = new System.Windows.Forms.TextBox();
             this.txtSoyisim = new System.Windows.Forms.TextBox();
-            this.dtpKayitTarihi = new System.Windows.Forms.DateTimePicker();
             this.maskedtxtTCKN = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@
             this.dgvKisiler = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -68,6 +68,7 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKisiler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -134,35 +135,21 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.88889F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.11111F));
-            this.tableLayoutPanel4.Controls.Add(this.label8, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label6, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.txtİsim, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtSoyisim, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.dtpKayitTarihi, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.maskedtxtTCKN, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(343, 168);
             this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 139);
-            this.label8.Margin = new System.Windows.Forms.Padding(20, 13, 25, 14);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 15);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Kayıt Tarihi :";
             // 
             // label4
             // 
@@ -177,7 +164,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 55);
+            this.label5.Location = new System.Drawing.Point(20, 69);
             this.label5.Margin = new System.Windows.Forms.Padding(20, 13, 25, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 15);
@@ -187,7 +174,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 97);
+            this.label6.Location = new System.Drawing.Point(20, 125);
             this.label6.Margin = new System.Windows.Forms.Padding(20, 13, 25, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 15);
@@ -206,25 +193,16 @@
             // txtSoyisim
             // 
             this.txtSoyisim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSoyisim.Location = new System.Drawing.Point(153, 52);
+            this.txtSoyisim.Location = new System.Drawing.Point(153, 66);
             this.txtSoyisim.Margin = new System.Windows.Forms.Padding(20, 10, 25, 14);
             this.txtSoyisim.Name = "txtSoyisim";
             this.txtSoyisim.Size = new System.Drawing.Size(165, 23);
             this.txtSoyisim.TabIndex = 10;
             // 
-            // dtpKayitTarihi
-            // 
-            this.dtpKayitTarihi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpKayitTarihi.Location = new System.Drawing.Point(153, 141);
-            this.dtpKayitTarihi.Margin = new System.Windows.Forms.Padding(20, 15, 25, 14);
-            this.dtpKayitTarihi.Name = "dtpKayitTarihi";
-            this.dtpKayitTarihi.Size = new System.Drawing.Size(165, 23);
-            this.dtpKayitTarihi.TabIndex = 12;
-            // 
             // maskedtxtTCKN
             // 
             this.maskedtxtTCKN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maskedtxtTCKN.Location = new System.Drawing.Point(153, 94);
+            this.maskedtxtTCKN.Location = new System.Drawing.Point(153, 122);
             this.maskedtxtTCKN.Margin = new System.Windows.Forms.Padding(20, 10, 25, 14);
             this.maskedtxtTCKN.Mask = "00000000000";
             this.maskedtxtTCKN.Name = "maskedtxtTCKN";
@@ -340,6 +318,7 @@
             this.btnListele.TabIndex = 3;
             this.btnListele.Text = "LİSTELE";
             this.btnListele.UseVisualStyleBackColor = true;
+            this.btnListele.Click += new System.EventHandler(this.btnListele_Click);
             // 
             // btnGüncelle
             // 
@@ -350,6 +329,7 @@
             this.btnGüncelle.TabIndex = 2;
             this.btnGüncelle.Text = "GÜNCELLE";
             this.btnGüncelle.UseVisualStyleBackColor = true;
+            this.btnGüncelle.Click += new System.EventHandler(this.btnGüncelle_Click);
             // 
             // btnSil
             // 
@@ -360,6 +340,7 @@
             this.btnSil.TabIndex = 1;
             this.btnSil.Text = "SİL";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
@@ -370,6 +351,7 @@
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "EKLE";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -430,6 +412,7 @@
             this.dgvKisiler.RowTemplate.Height = 25;
             this.dgvKisiler.Size = new System.Drawing.Size(788, 175);
             this.dgvKisiler.TabIndex = 1;
+            this.dgvKisiler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKisiler_CellClick);
             // 
             // tableLayoutPanel2
             // 
@@ -455,6 +438,10 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Yeni Kişi Kayıt";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // KisiKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -475,6 +462,7 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKisiler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -492,10 +480,8 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label8;
         private TextBox txtİsim;
         private TextBox txtSoyisim;
-        private DateTimePicker dtpKayitTarihi;
         private Label label9;
         private Label label10;
         private Label label11;
@@ -513,5 +499,6 @@
         private Label label7;
         private TextBox txtAramaYap;
         private DataGridView dgvKisiler;
+        private ErrorProvider errorProvider1;
     }
 }
