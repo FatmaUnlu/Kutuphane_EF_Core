@@ -27,7 +27,7 @@ namespace Kutuphane_EF_Core.Repository
                 {
                     KitapAd = x.KitapAdi,
                     YayınEvi = x.Yayinevi.YayineviAdi,
-                    YazarAdı = string.Join(',', x.KitapYazarlar.Select(z => z.Yazar.YazarAd + "" + z.Yazar.YazarSoyad).ToList()),
+                    Yazar = string.Join(',', x.KitapYazarlar.Select(z => z.Yazar.YazarAd + "" + z.Yazar.YazarSoyad).ToList()),
                     Kategori = string.Join(',', x.KitapKategoriler.Select(y => y.Kategori.KategoriAdi).ToList()),
 
                 });

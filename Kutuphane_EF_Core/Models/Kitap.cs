@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Kutuphane_EF_Core.Models
 { 
-    [Table("Kitaolar")]
+    [Table("Kitaplar")]
     public class Kitap :BaseEntity, IKey<int>
     {
         [Key]
         public int Id { get; set; }
 
-        [Required, StringLength(11)]
+        [Required, StringLength(13)]
         public string Isbn { get; set; }
 
         [Required, StringLength(50)]

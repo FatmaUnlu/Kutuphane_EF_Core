@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kutuphane_EF_Core.Models.Abstracts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Kutuphane_EF_Core.Models
 {
     [Table("KitapKategoriler")]
-    public class KitapKategori
+    public class KitapKategori 
     { 
         public int KitapId { get; set; }
        

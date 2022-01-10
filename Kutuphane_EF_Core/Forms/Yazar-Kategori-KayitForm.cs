@@ -313,7 +313,7 @@ namespace Kutuphane_EF_Core.Forms
             if (lstViewYayinevi.SelectedItems.Count == 0) return;
 
             var seciliYayinevi = this.lstViewYayinevi.SelectedItems[0].Tag as Yayinevi;
-            var yayinevi = _yayineviRepo.GetAll().FirstOrDefault(x => x.Id == seciliYayinevi.Id) as Yayinevi;
+            var yayinevi = _yayineviRepo.GetAll().FirstOrDefault(x => x.Id == seciliYayinevi.Id && x.IsDeleted == false) as Yayinevi;
             if (seciliYayinevi == null) return;
 
             DialogResult cevap = MessageBox.Show("Seçili yayınevini silmek istiyor musunuz?", "Silme onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

@@ -11,8 +11,7 @@ namespace Kutuphane_EF_Core.ViewModels
         public string KitapAd { get; set; }
         public string Kategori { get; set; }
 
-        public string YazarAdı { get; set; }
-        public string YazarSoyadı { get; set; }
+        public string Yazar { get; set; }
         public string YayınEvi { get; set; }
 
         //public int Adet { get; set; } = 0;

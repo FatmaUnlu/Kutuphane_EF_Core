@@ -1,6 +1,7 @@
 ﻿using Kutuphane_EF_Core.Data;
 using Kutuphane_EF_Core.Models;
 using Kutuphane_EF_Core.Repository;
+using Kutuphane_EF_Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,72 +28,111 @@ namespace Kutuphane_EF_Core.Forms
             InitializeComponent();
             dgvKitapListesi.DataSource = _kitapRepo.KitapListele();
 
-            cmbKategori.DataSource = _kategoriRepo.KategoriListele();
-            cmbKategori.DisplayMember = "Ad";
 
             cmbYayinEvi.DataSource = _yayineviRepo.YayinEviListele(); //yayınevi kayıt formu aç.
             cmbYayinEvi.DisplayMember = "YayineviAdi";
-
-            cmbYazar.DataSource = _yazarRepo.YazarListele();
-            cmbYazar.DisplayMember = "YazarAd-YazarSoyad";
-
 
         }
 
         private Kategori seciliKategori;
         private Yazar seciliYazar;
-        //private void btnEkle_Click(object sender, EventArgs e)
-        //{
-        //    using (var tran = _dbContext.Database.BeginTransaction()) //using ifadeler garbage collector tarafından işlem bitince temizlenir
-        //    {
-        //        DialogResult result = MessageBox.Show("Ürün eklemek istiyor musunuz?", "Ürün Ekleme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        //        if (result == DialogResult.Yes)
-        //        {
-        //            //var yazar = cmbYazar.SelectedItem as Yazar;
-        //            //var kategori = cmbKategori.SelectedItem as Kategori;
-        //            var yayinEvi = cmbYayinEvi.SelectedItem as Yayinevi;
 
-        //            try
-        //            {
-        //                var kitap = new Kitap()
-        //                {
-        //                    YayineviId = (int)yayinEvi?.Id, //null da gelebilir demek, null değilse de CustomerId değerini değişkene ata. 
-        //                    Isbn = txtISBN.Text,
-        //                    KitapAdi = txtKitapAd.Text,
-        //                    SayfaSayisi = txtSayfaSayisi.Text,
-        //                    YayinTarihi = dtpYayinTarihi.Value,
+        private void KitapDoldur()
+        {
+            dgvKitapListesi.DataSource = null;
+            dgvKitapListesi.DataSource = _kitapRepo.KitapListele();
+        }
+        private void btnEkle_Click(object sender, EventArgs e)
+        {           
+            using (var tran = _dbContext.Database.BeginTransaction()) //using ifadeler garbage collector tarafından işlem bitince temizlenir
+            {
+                DialogResult result = MessageBox.Show("Kitap eklemek istiyor musunuz?", "Ürün Ekleme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {                   
+                    var yayinEvi = cmbYayinEvi.SelectedItem as Yayinevi;
+                    
+                    try
+                    {
+                        var kitap = new Kitap()
+                        {
+                            YayineviId = (int)yayinEvi?.Id, //null da gelebilir demek, null değilse de CustomerId değerini değişkene ata. 
+                            Isbn = maskedtxtISBN.Text,
+                            KitapAdi = txtKitapAd.Text,
+                            SayfaSayisi = txtSayfaSayisi.Text,
+                            YayinTarihi = dtpYayinTarihi.Value,                            
+                        };
+                        _kitapRepo.Add(kitap);
+                        KitapDoldur();
+                      
+                        var kitaplar=_kitapRepo.GetAll().Where(x=> x.Isbn == maskedtxtISBN.Text && x.IsDeleted==false).FirstOrDefault() as Kitap;
 
-        //                };
-        //                _kitapRepo.Add(kitap);
+                        if (kitaplar == null) return;
+                        foreach (Kategori item in checkedLbKategori.CheckedItems)
+                        {
+                            var kitapKategori = new KitapKategori()
+                            {
+                                KitapId = kitaplar.Id,
+                                KategoriId = item.Id
+                            };
+                            _dbContext.KitapKategoriler.Add(kitapKategori);
+                            _dbContext.SaveChanges();
 
-        //                //coklu seçimdeki her bir elemanın id sini kategori id ata
-        //                //son grilen kitabın ıd sini bul.
-        //                _dbContext.KitapKategoriler.Add(new KitapKategori()
-        //                {
-        //                    //Kitapıd ye son buldugun ıd yi ata
-        //                    KitapId = kitap.Id,
-        //                    //kategpriıd ye 
-        //                    KategoriId = Kategori.Id,
+                            //_dbContext.KitapKategoriler.Add(new KitapKategori()
+                            //{
+                            //    //Kitapıd ye son buldugun ıd yi ata
+                            //    KitapId = kitaplar.Id,
+                            //    //kategpriıd ye buldugun ıd yi ata
+                            //    KategoriId = item.Id
+                            //});
+                        }                        
+                        
+                        foreach (Yazar item in checkedLbYazar.CheckedItems)
+                        {
+                            var kitapYazar = new KitapYazar()
+                            {
+                                KitapId = kitaplar.Id,
+                                YazarId = item.Id
+                            };
+                            _dbContext.KitapYazarlar.Add(kitapYazar);
+                            _dbContext.SaveChanges();
+                            //_dbContext.KitapYazarlar.Add(new KitapYazar()
+                            //{
 
-        //                });
+                            //    KitapId = kitaplar.Id,
 
+                            //    YazarId = item.Id
+                            //});                           
+                        }
 
-        //            }
-        //            catch (Exception ex)
-        //            {
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        MessageBox.Show(ex.Message, "Bir hata oluştu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    };
 
-        //                MessageBox.Show(ex.Message, "Bir hata oluştu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            };
-        //            _urunRepo.Add(urun);
-        //            UrunListele();
-        //            MessageBox.Show("Ürün Ekleme işlemi Tamamlandı");
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Ürün Ekleme işlemi Yapılmadı");
+                    KitapDoldur();
+                    MessageBox.Show("Kitap Ekleme işlemi Tamamlandı");
+                }
+                else
+                {
+                    MessageBox.Show("Kitap Ekleme işlemi Yapılmadı");
+                }
+            }
+        }
 
-        //        }
-        //    }
-       // }
+        private void KitapKayitForm_Load(object sender, EventArgs e)
+        {
+            var kategori =_kategoriRepo.GetAll().Where(x => x.IsDeleted == false).ToList();
+            checkedLbKategori.DataSource=kategori;
+            checkedLbKategori.DisplayMember = "KategoriAdi";
+            checkedLbKategori.ValueMember = "Id";
+
+            var yazar = _yazarRepo.GetAll().Where(x => x.IsDeleted == false).ToList();
+            checkedLbYazar.DataSource = yazar;
+            //checkedLbYazar.DisplayMember = "YazarAd";
+            //checkedLbYazar.ValueMember = "Id";
+        }
     }
 }
