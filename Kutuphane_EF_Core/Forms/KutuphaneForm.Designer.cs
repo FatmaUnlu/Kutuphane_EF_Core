@@ -1529,35 +1529,50 @@
             // 
             // kişiKayıtFormuToolStripMenuItem
             // 
+            this.kişiKayıtFormuToolStripMenuItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.kişiKayıtFormuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.kişiKayıtFormuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Window;
             this.kişiKayıtFormuToolStripMenuItem.Name = "kişiKayıtFormuToolStripMenuItem";
-            this.kişiKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.kişiKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.kişiKayıtFormuToolStripMenuItem.Text = "Kişi Kayıt Formu";
             this.kişiKayıtFormuToolStripMenuItem.Click += new System.EventHandler(this.kişiKayıtFormuToolStripMenuItem_Click);
             // 
             // kitapKayıtFormuToolStripMenuItem
             // 
+            this.kitapKayıtFormuToolStripMenuItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.kitapKayıtFormuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.kitapKayıtFormuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Window;
             this.kitapKayıtFormuToolStripMenuItem.Name = "kitapKayıtFormuToolStripMenuItem";
-            this.kitapKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.kitapKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
             this.kitapKayıtFormuToolStripMenuItem.Text = "Kitap Kayıt Formu";
             this.kitapKayıtFormuToolStripMenuItem.Click += new System.EventHandler(this.kitapKayıtFormuToolStripMenuItem_Click);
             // 
             // yazarKategoriKayıtFormuToolStripMenuItem
             // 
+            this.yazarKategoriKayıtFormuToolStripMenuItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.yazarKategoriKayıtFormuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.yazarKategoriKayıtFormuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Window;
             this.yazarKategoriKayıtFormuToolStripMenuItem.Name = "yazarKategoriKayıtFormuToolStripMenuItem";
-            this.yazarKategoriKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(160, 20);
+            this.yazarKategoriKayıtFormuToolStripMenuItem.Size = new System.Drawing.Size(169, 20);
             this.yazarKategoriKayıtFormuToolStripMenuItem.Text = "Yazar Kategori Kayıt Formu";
             this.yazarKategoriKayıtFormuToolStripMenuItem.Click += new System.EventHandler(this.yazarKategoriKayıtFormuToolStripMenuItem_Click);
             // 
             // emanetKitapFormuToolStripMenuItem
             // 
+            this.emanetKitapFormuToolStripMenuItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.emanetKitapFormuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.emanetKitapFormuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Window;
             this.emanetKitapFormuToolStripMenuItem.Name = "emanetKitapFormuToolStripMenuItem";
-            this.emanetKitapFormuToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
+            this.emanetKitapFormuToolStripMenuItem.Size = new System.Drawing.Size(132, 20);
             this.emanetKitapFormuToolStripMenuItem.Text = "Emanet Kitap Formu";
             // 
             // istatistikToolStripMenuItem
             // 
+            this.istatistikToolStripMenuItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.istatistikToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.istatistikToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Window;
             this.istatistikToolStripMenuItem.Name = "istatistikToolStripMenuItem";
-            this.istatistikToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.istatistikToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.istatistikToolStripMenuItem.Text = "İstatistik";
             // 
             // KutuphaneForm

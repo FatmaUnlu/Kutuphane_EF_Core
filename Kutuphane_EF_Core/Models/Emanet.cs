@@ -26,7 +26,9 @@ namespace Kutuphane_EF_Core.Models
         public DateTime EmanetTarihi { get; set; }
         [Required]
         public DateTime Teslimtarihi { get; set; }
-      
+        [Required]
+        public string TeslimDurumu { get; set; }
+
 
     }
 }
