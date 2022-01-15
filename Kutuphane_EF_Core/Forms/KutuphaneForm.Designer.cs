@@ -1565,6 +1565,7 @@
             this.emanetKitapFormuToolStripMenuItem.Name = "emanetKitapFormuToolStripMenuItem";
             this.emanetKitapFormuToolStripMenuItem.Size = new System.Drawing.Size(132, 20);
             this.emanetKitapFormuToolStripMenuItem.Text = "Emanet Kitap Formu";
+            this.emanetKitapFormuToolStripMenuItem.Click += new System.EventHandler(this.emanetKitapFormuToolStripMenuItem_Click);
             // 
             // istatistikToolStripMenuItem
             // 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kutuphane_EF_Core.Models;
+using Kutuphane_EF_Core.Models.Abstracts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kutuphane_EF_Core.Models.Abstracts
+namespace Kutuphane_EF_Core.Models
 {
     [Table(name: "Uyeler")]
-    public class Uye:BaseEntity ,IKey<int>
+    public partial class Uye:BaseEntity ,IKey<int>
     {
         [Key]
         public int Id { get; set; }

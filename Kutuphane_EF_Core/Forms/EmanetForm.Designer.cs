@@ -37,17 +37,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.CmbKitapAd = new System.Windows.Forms.ComboBox();
+            this.cmbKitapAd = new System.Windows.Forms.ComboBox();
             this.cmbUyeAdi = new System.Windows.Forms.ComboBox();
             this.maskedTxtEmanetTarihi = new System.Windows.Forms.MaskedTextBox();
             this.maskedTxtTeslimTarihi = new System.Windows.Forms.MaskedTextBox();
-            this.txtTeslimDurumu = new System.Windows.Forms.TextBox();
+            this.cmbTeslimDurumu = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnListele = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstEmanetler = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -61,7 +61,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lstEmanetler, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -112,11 +112,11 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.CmbKitapAd, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmbKitapAd, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmbUyeAdi, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.maskedTxtEmanetTarihi, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.maskedTxtTeslimTarihi, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.txtTeslimDurumu, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.cmbTeslimDurumu, 1, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -204,14 +204,14 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Teslim Tarihi :";
             // 
-            // CmbKitapAd
+            // cmbKitapAd
             // 
-            this.CmbKitapAd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CmbKitapAd.FormattingEnabled = true;
-            this.CmbKitapAd.Location = new System.Drawing.Point(233, 3);
-            this.CmbKitapAd.Name = "CmbKitapAd";
-            this.CmbKitapAd.Size = new System.Drawing.Size(456, 23);
-            this.CmbKitapAd.TabIndex = 7;
+            this.cmbKitapAd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbKitapAd.FormattingEnabled = true;
+            this.cmbKitapAd.Location = new System.Drawing.Point(233, 3);
+            this.cmbKitapAd.Name = "cmbKitapAd";
+            this.cmbKitapAd.Size = new System.Drawing.Size(456, 23);
+            this.cmbKitapAd.TabIndex = 7;
             // 
             // cmbUyeAdi
             // 
@@ -226,25 +226,33 @@
             // 
             this.maskedTxtEmanetTarihi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maskedTxtEmanetTarihi.Location = new System.Drawing.Point(233, 79);
+            this.maskedTxtEmanetTarihi.Mask = "00/00/0000";
             this.maskedTxtEmanetTarihi.Name = "maskedTxtEmanetTarihi";
             this.maskedTxtEmanetTarihi.Size = new System.Drawing.Size(456, 23);
             this.maskedTxtEmanetTarihi.TabIndex = 9;
+            this.maskedTxtEmanetTarihi.ValidatingType = typeof(System.DateTime);
             // 
             // maskedTxtTeslimTarihi
             // 
             this.maskedTxtTeslimTarihi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maskedTxtTeslimTarihi.Location = new System.Drawing.Point(233, 117);
+            this.maskedTxtTeslimTarihi.Mask = "00/00/0000";
             this.maskedTxtTeslimTarihi.Name = "maskedTxtTeslimTarihi";
             this.maskedTxtTeslimTarihi.Size = new System.Drawing.Size(456, 23);
             this.maskedTxtTeslimTarihi.TabIndex = 10;
+            this.maskedTxtTeslimTarihi.ValidatingType = typeof(System.DateTime);
             // 
-            // txtTeslimDurumu
+            // cmbTeslimDurumu
             // 
-            this.txtTeslimDurumu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTeslimDurumu.Location = new System.Drawing.Point(233, 155);
-            this.txtTeslimDurumu.Name = "txtTeslimDurumu";
-            this.txtTeslimDurumu.Size = new System.Drawing.Size(456, 23);
-            this.txtTeslimDurumu.TabIndex = 11;
+            this.cmbTeslimDurumu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbTeslimDurumu.FormattingEnabled = true;
+            this.cmbTeslimDurumu.Items.AddRange(new object[] {
+            "Teslim Edildi",
+            "TeslimEdilmedi"});
+            this.cmbTeslimDurumu.Location = new System.Drawing.Point(233, 155);
+            this.cmbTeslimDurumu.Name = "cmbTeslimDurumu";
+            this.cmbTeslimDurumu.Size = new System.Drawing.Size(456, 23);
+            this.cmbTeslimDurumu.TabIndex = 11;
             // 
             // tableLayoutPanel4
             // 
@@ -278,6 +286,7 @@
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btnSil
             // 
@@ -318,15 +327,15 @@
             this.btnListele.Text = "Listele";
             this.btnListele.UseVisualStyleBackColor = false;
             // 
-            // listBox1
+            // lstEmanetler
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(3, 250);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(794, 197);
-            this.listBox1.TabIndex = 3;
+            this.lstEmanetler.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstEmanetler.FormattingEnabled = true;
+            this.lstEmanetler.ItemHeight = 15;
+            this.lstEmanetler.Location = new System.Drawing.Point(3, 250);
+            this.lstEmanetler.Name = "lstEmanetler";
+            this.lstEmanetler.Size = new System.Drawing.Size(794, 197);
+            this.lstEmanetler.TabIndex = 3;
             // 
             // EmanetForm
             // 
@@ -336,6 +345,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EmanetForm";
             this.Text = "EmanetForm";
+            this.Load += new System.EventHandler(this.EmanetForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -356,16 +366,16 @@
         private Label label1;
         private Label label3;
         private Label label4;
-        private ComboBox CmbKitapAd;
+        private ComboBox cmbKitapAd;
         private ComboBox cmbUyeAdi;
         private MaskedTextBox maskedTxtEmanetTarihi;
         private MaskedTextBox maskedTxtTeslimTarihi;
-        private TextBox txtTeslimDurumu;
         private TableLayoutPanel tableLayoutPanel4;
         private Button btnEkle;
         private Button btnSil;
         private Button btnGuncelle;
         private Button btnListele;
-        private ListBox listBox1;
+        private ListBox lstEmanetler;
+        private ComboBox cmbTeslimDurumu;
     }
 }

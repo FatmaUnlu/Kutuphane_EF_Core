@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Kutuphane_EF_Core.Models
 {
     [Table("Emanetler")]
-    public class Emanet:BaseEntity,IKey<int>
+    public partial class Emanet:BaseEntity,IKey<int>
     {
         [Key]
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace Kutuphane_EF_Core.Models
         [Required]
         public string TeslimDurumu { get; set; }
 
-
+  
     }
 }
