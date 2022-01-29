@@ -9,9 +9,9 @@ namespace Kutuphane_EF_Core.Models
 {
     public partial class Emanet
     {
-        //public override string ToString()
-        //{
-        //    return $"{Kitap.KitapAdi} - {Uye.UyeAd} - {EmanetTarihi} - {Teslimtarihi} - {TeslimDurumu}";
-        //}
+        public override string ToString()
+        {
+            return $"{KitapId} - {UyeId} - {EmanetTarihi} - {Teslimtarihi} - {TeslimDurumu}";
+        }
     }
 }

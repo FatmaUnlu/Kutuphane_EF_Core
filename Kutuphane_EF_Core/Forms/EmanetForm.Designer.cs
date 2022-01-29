@@ -300,6 +300,7 @@
             this.btnSil.TabIndex = 1;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnGuncelle
             // 
@@ -313,6 +314,7 @@
             this.btnGuncelle.TabIndex = 2;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnListele
             // 
@@ -336,6 +338,7 @@
             this.lstEmanetler.Name = "lstEmanetler";
             this.lstEmanetler.Size = new System.Drawing.Size(794, 197);
             this.lstEmanetler.TabIndex = 3;
+            this.lstEmanetler.SelectedIndexChanged += new System.EventHandler(this.lstEmanetler_SelectedIndexChanged);
             // 
             // EmanetForm
             // 

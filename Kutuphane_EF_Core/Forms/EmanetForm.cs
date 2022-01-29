@@ -95,5 +95,120 @@ namespace Kutuphane_EF_Core.Forms
 
             }
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            //Kütüphane veritabanında emanet verileri silinmesin 
+
+            //Emanet seciliEmanet = (Emanet)lstEmanetler.SelectedItem;
+            //var emanet = _emanetRepo.GetAll().FirstOrDefault(x => x.Id == seciliEmanet.Id) as Emanet;
+
+            //if (seciliEmanet == null) return;
+
+            //DialogResult cevap = MessageBox.Show("Seçili emaneti silmek istiyor musunuz?", "Silme onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //if (cevap == DialogResult.Yes)
+            //{
+            //    try
+            //    {
+            //        _emanetRepo.Remove(emanet);
+            //        MessageBox.Show("Emanet silme işlemi tamamlandı");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);                  
+            //    }
+            //    finally
+            //    {
+            //        EmanetListele();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Emanet silme işlemi yapılmadı");
+
+            //}
+        }
+        private Emanet seciliEmanet;
+        private Uye seciliUyeAdi;
+        private void lstEmanetler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstEmanetler.SelectedItem == null) return; //index çaıştığında null gelebilir. Hata verme.
+
+            seciliEmanet = (Emanet)lstEmanetler.SelectedItem;
+            cmbKitapAd.SelectedItem = seciliEmanet.Kitap;
+            cmbUyeAdi.SelectedItem = seciliEmanet.Uye;
+            maskedTxtEmanetTarihi.Text = seciliEmanet.EmanetTarihi.ToString();
+            maskedTxtTeslimTarihi.Text = seciliEmanet.Teslimtarihi.ToString();
+            cmbTeslimDurumu.SelectedItem = seciliEmanet.TeslimDurumu;
+
+        }
+
+        private Kitap seciliKitap;
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cmbKitapAd.Text) && string.IsNullOrEmpty(cmbUyeAdi.Text)&& string.IsNullOrEmpty(cmbTeslimDurumu.Text))
+            {
+                MessageBox.Show("Kitap Adı, Uye Adı ve teslim durumu alanları boş geçilemez.");
+                return;
+            }
+
+            Emanet seciliEmanet = (Emanet)lstEmanetler.SelectedItem;
+
+            if (seciliEmanet == null) return;
+
+            if (cmbKitapAd.SelectedItem != null)
+            {
+                seciliKitap = (Kitap)cmbKitapAd.SelectedItem;
+            }
+            else
+            {
+                seciliKitap = null; return;
+            }
+            if (cmbUyeAdi.SelectedItem != null)
+            {
+                seciliUyeAdi = (Uye)cmbUyeAdi.SelectedItem;
+            }
+            else
+            {
+                seciliUyeAdi = null; return;
+            }
+            if (cmbTeslimDurumu.SelectedItem != null)
+            {
+                seciliEmanet.TeslimDurumu = cmbTeslimDurumu.SelectedItem.ToString();
+            }
+            else
+            {
+                seciliEmanet.TeslimDurumu = null; return;
+            }
+            try
+            {
+                DialogResult result = MessageBox.Show("Seçili emanet bilgilerini güncellemek istiyor musunuz?", "Emanet Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    //var urun = _urunRepo.GetAll().First(x => x.Id == seciliUrun.Id);
+                    var emanet = _emanetRepo.GetById(seciliEmanet.Id);
+
+                    emanet.Teslimtarihi=Convert.ToDateTime(maskedTxtTeslimTarihi.Text);
+                    emanet.EmanetTarihi = Convert.ToDateTime(maskedTxtEmanetTarihi.Text);
+                    _emanetRepo.Update(emanet);
+                }
+                else
+                {
+                    MessageBox.Show("Emanet Güncelleme İşlemi Yapılmadı");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kitap Adı, Uye Adı ve teslim durumu alanları boş geçilemez.");
+            }
+            finally
+            {
+                EmanetListele();
+                MessageBox.Show("Emanet Güncelleme İşlemi Yapıldı");
+            }
+
+        }
     }
 }
